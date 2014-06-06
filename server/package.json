@@ -1,7 +1,23 @@
 {
-  "name": "socketio",
+  "name": "server",
   "dependencies": {
     "socket.io": "^1.0",
     "express": "^4.4"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "version": "0.1.0",
+  "description": "ERROR: No README data found!",
+  "main": "server.js",
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:wooptoo/nerdlog.git"
+  },
+  "author": "Radu Potop <radu.potop@wooptoo.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/wooptoo/nerdlog/issues"
   }
 }
