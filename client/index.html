@@ -8,7 +8,11 @@
 
     Scrollback:
     <br>
-    <pre id="scrollback" style="background: #eee"></pre>
+    <div style="background: #eee; font-family: monospace; height: 200px; overflow: auto;">
+        <p ng-repeat="e in scrollback">
+            {{e.user}}: {{e.msg}}
+        </p>
+    </div>
     <br>
     <br>
 

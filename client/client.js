@@ -18,24 +18,18 @@ var client = angular.module('client', []);
 
 client.controller('msg', function($scope) {
 
+    $scope.scrollback = [];
+
     /**
      * Append message to scrollback
      */
     $scope.appendToScrollback = function(scrollback) {
-        angular.element('#scrollback').append(
-            angular.element(['<p>', scrollback.user, ': ', scrollback.msg, '</p>\n'].join(''))
-        );
-        //~ $scope.scrollback += [scrollback.user, ': ', scrollback.msg, '\n'].join('');$scope.scrollback
-        //~ $scope.scrollback.push(scrollback);
-        //~ console.log($scope.scrollback);
-        //~ $scope.$apply();
+        $scope.scrollback.push(angular.copy(scrollback));
     }
 
     $scope.input = {
         user: "The Dude"
     }
-
-    $scope.scrollback = [];
 
     var socket = io.connect('ws://localhost:3001');
 
@@ -56,6 +50,12 @@ client.controller('msg', function($scope) {
 
     };
 
-    socket.on('scrollback', $scope.appendToScrollback);
+    /**
+     * Handle scrollback event from server
+     */
+    socket.on('scrollback', function(scrollback) {
+        $scope.appendToScrollback(scrollback);
+        $scope.$apply();
+    });
 
 });
