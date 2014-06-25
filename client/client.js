@@ -1,19 +1,3 @@
-// socket client demo
-//~ var socket = io.connect('ws://localhost:3001');
-
-/**
- * Listen on event from server
- */
-//~ socket.on('news', function(data) {
-    //~ console.log(data);
-//~ });
-
-/**
- * Emit to client
- */
-//~ socket.emit('client', {client: 'UA: ' + window.navigator.userAgent});
-
-
 var client = angular.module('client', []);
 
 client.controller('msg', function($scope) {
@@ -35,7 +19,8 @@ client.controller('msg', function($scope) {
     var socket = io.connect('ws://localhost:3001');
 
     /**
-     * Send a message
+     * Send a message.
+     * Append to own scrollback without roundtrip to server.
      */
     $scope.sengMsg = function(input) {
 
@@ -54,7 +39,7 @@ client.controller('msg', function($scope) {
     };
 
     /**
-     * Handle scrollback event from server
+     * Handle scrollback event from server.
      */
     socket.on('scrollback', function(scrollback) {
         $scope.appendToScrollback(scrollback);
