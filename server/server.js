@@ -9,7 +9,7 @@ server.listen(8081);
  * Main route
  */
 app.get('/', function(req, res) {
-    res.write('');
+    res.write('Server is up.');
     res.end();
 });
 
