@@ -18,7 +18,7 @@ client.controller('msg', function($scope, config) {
 
     var socket = io.connect('ws://' + config.host + ':' + config.port);
 
-    socket.emit('join', $scope.input.user);
+    socket.emit('join', {user: $scope.input.user, msg: 'joined'});
 
     /**
      * Send a message.
@@ -45,6 +45,11 @@ client.controller('msg', function($scope, config) {
      */
     socket.on('scrollback', function(scrollback) {
         $scope.appendToScrollback(scrollback);
+        $scope.$apply();
+    });
+
+    socket.on('join', function(data) {
+        $scope.appendToScrollback(data);
         $scope.$apply();
     });
 

@@ -33,4 +33,11 @@ io.on('connection', function(socket) {
 
     });
 
+    /**
+     * User joined
+     */
+    socket.on('join', function(data) {
+        socket.broadcast.emit('join', data);
+    });
+
 });
