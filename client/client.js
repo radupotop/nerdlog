@@ -18,6 +18,8 @@ client.controller('msg', function($scope, config) {
 
     var socket = io.connect('ws://' + config.host + ':' + config.port);
 
+    socket.emit('join', $scope.input.user);
+
     /**
      * Send a message.
      * Append to own scrollback without roundtrip to server.
