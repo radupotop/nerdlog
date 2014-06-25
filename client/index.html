@@ -10,7 +10,7 @@
     <br>
     <div style="background: #eee; font-family: monospace; height: 200px; overflow: auto;">
         <p ng-repeat="e in scrollback">
-            <span ng-bind="e.timestamp | date: 'HH:mm'"></span>
+            <span ng-bind="e.timestamp | date: 'HH:mm'" style="font-size: .75em;"></span>
             <span ng-bind="e.user"></span>:
             <span ng-bind="e.msg"></span>
         </p>

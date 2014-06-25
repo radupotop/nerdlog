@@ -24,9 +24,9 @@ io.on('connection', function(socket) {
      */
     socket.on('msg', function(data) {
 
-        console.log(data);
-
         data.timestamp = new Date().toISOString();
+
+        console.log(data);
 
         socket.broadcast.emit('scrollback', data);
         socket.emit('ack', data);
