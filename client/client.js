@@ -24,12 +24,13 @@ client.controller('msg', function($scope) {
      * Append message to scrollback
      */
     $scope.appendToScrollback = function(scrollback) {
+        console.log(scrollback);
         $scope.scrollback.push(angular.copy(scrollback));
-    }
+    };
 
     $scope.input = {
         user: "The Dude"
-    }
+    };
 
     var socket = io.connect('ws://localhost:3001');
 
@@ -41,6 +42,8 @@ client.controller('msg', function($scope) {
         if(input.msg) {
 
             socket.emit('msg', input);
+
+            input.timestamp = new Date().toISOString();
             $scope.appendToScrollback(input);
 
             // clear msg

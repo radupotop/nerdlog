@@ -1,8 +1,8 @@
 {
   "name": "server",
   "dependencies": {
-    "socket.io": "1.0.4",
-    "express": "4.4.1"
+    "express": "4.4.1",
+    "socket.io": "1.0.4"
   },
   "scripts": {
     "start": "node server.js"

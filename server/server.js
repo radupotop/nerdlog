@@ -20,10 +20,13 @@ io.on('connection', function(socket) {
 
     /**
      * Handle data from client
+     * Timestamp the data when leaving server.
      */
     socket.on('msg', function(data) {
         console.log(data);
+        data.timestamp = new Date().toISOString();
         socket.broadcast.emit('scrollback', data);
+        socket.emit('ack', data);
     });
 
 });
