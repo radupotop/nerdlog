@@ -16,7 +16,7 @@ client.controller('msg', function($scope) {
         user: "The Dude"
     };
 
-    var socket = io.connect('ws://localhost:3001');
+    var socket = io.connect('ws://localhost:8081');
 
     /**
      * Send a message.
