@@ -1,6 +1,6 @@
 var client = angular.module('client', []);
 
-client.controller('msg', function($scope) {
+client.controller('msg', function($scope, config) {
 
     $scope.scrollback = [];
 
@@ -16,7 +16,7 @@ client.controller('msg', function($scope) {
         user: "The Dude"
     };
 
-    var socket = io.connect('ws://localhost:8081');
+    var socket = io.connect('ws://' + config.host + ':' + config.port);
 
     /**
      * Send a message.
