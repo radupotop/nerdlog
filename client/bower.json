@@ -1,7 +1,7 @@
 {
   "name": "client",
   "main": "client.js",
-  "version": "0.1",
+  "version": "0.2",
   "homepage": "https://github.com/wooptoo/nerdlog",
   "authors": [
     "Radu Potop <radu.potop@wooptoo.com>"
