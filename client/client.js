@@ -30,8 +30,7 @@ client.controller('msg', function($scope, config) {
 
             socket.emit('msg', input);
 
-            input.timestamp = new Date().toISOString();
-            $scope.appendToScrollback(input);
+            //~ $scope.appendToScrollback(input);
 
             // clear msg
             $scope.input.msg = '';
@@ -41,16 +40,13 @@ client.controller('msg', function($scope, config) {
     };
 
     /**
-     * Handle scrollback event from server.
+     * Handle events from server.
      */
-    socket.on('scrollback', function(scrollback) {
-        $scope.appendToScrollback(scrollback);
-        $scope.$apply();
-    });
-
-    socket.on('join', function(data) {
-        $scope.appendToScrollback(data);
-        $scope.$apply();
+    ['scrollback', 'ack', 'join'].forEach(function(event){
+        return socket.on(event, function(msg) {
+            $scope.appendToScrollback(msg);
+            $scope.$apply();
+        });
     });
 
 });
