@@ -7,9 +7,10 @@ client.controller('msg', function($scope, config) {
     /**
      * Append message to scrollback
      */
-    $scope.appendToScrollback = function(scrollback) {
+    function appendToScrollback(scrollback) {
         console.log(scrollback);
         $scope.scrollback.push(angular.copy(scrollback));
+        $scope.$apply();
     };
 
     $scope.input = {
@@ -22,15 +23,12 @@ client.controller('msg', function($scope, config) {
 
     /**
      * Send a message.
-     * Append to own scrollback without roundtrip to server.
      */
     $scope.sengMsg = function(input) {
 
         if(input.msg) {
 
             socket.emit('msg', input);
-
-            //~ $scope.appendToScrollback(input);
 
             // clear msg
             $scope.input.msg = '';
@@ -43,10 +41,7 @@ client.controller('msg', function($scope, config) {
      * Handle events from server.
      */
     ['scrollback', 'ack', 'join'].forEach(function(event){
-        return socket.on(event, function(msg) {
-            $scope.appendToScrollback(msg);
-            $scope.$apply();
-        });
+        return socket.on(event, appendToScrollback);
     });
 
 });
