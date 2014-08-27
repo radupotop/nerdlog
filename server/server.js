@@ -1,6 +1,5 @@
 // socket server demo
-var app = require('express')();
-var server = require('http').Server(app);
+var server = require('http').createServer(httpHandler);
 var io = require('socket.io')(server);
 
 server.listen(8081);
@@ -8,10 +7,11 @@ server.listen(8081);
 /**
  * Main route
  */
-app.get('/', function(req, res) {
+function httpHandler(req, res) {
+    res.writeHead(200, {'Content-Type': 'text/plain'});
     res.write('Server is up.');
     res.end();
-});
+}
 
 /**
  * Handle connection upgrade
