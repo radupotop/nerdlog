@@ -15,9 +15,9 @@
     "tests"
   ],
   "dependencies": {
-    "socket.io-client": "1.0.4",
-    "angular": "~1.2.16",
-    "angular-route": "~1.2.16",
+    "socket.io-client": "~1.1.0",
+    "angular": "~1.2.26",
+    "angular-route": "~1.2.26",
     "jquery": "~2.1.1"
   }
 }
