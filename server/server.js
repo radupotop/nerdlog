@@ -24,14 +24,14 @@ io.on('connection', function(socket) {
      */
     socket.on('msg', function(data) {
 
-        data.timestamp = new Date().toISOString();
+        data.timestamp = new Date().toJSON();
 
         console.log(data);
 
         socket.broadcast.emit('scrollback', data);
-        
+
         /**
-         * Client should queue messages and resend if 
+         * Client should queue messages and resend if
          * no ACK is received in a reasonable timeframe.
          */
         socket.emit('ack', data);
