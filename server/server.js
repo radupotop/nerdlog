@@ -4,6 +4,7 @@ var io = require('socket.io')(server);
 var model = require('./model');
 
 server.listen(8081);
+io.set('transports', ['websocket']);
 
 /**
  * Main route only shows the server status.

@@ -2,6 +2,8 @@ var client = angular.module('client', []);
 
 client.controller('msg', function($scope, config) {
 
+    var socket = io.connect('ws://' + config.host + ':' + config.port, {transports: ['websocket']});
+
     $scope.scrollback = [];
 
     /**
