@@ -1,6 +1,7 @@
 {
   "name": "server",
   "dependencies": {
+    "lodash": "^3.10.1",
     "socket.io": "1.4.3"
   },
   "scripts": {

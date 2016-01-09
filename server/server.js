@@ -1,11 +1,12 @@
 // socket server demo
 var server = require('http').createServer(httpHandler);
 var io = require('socket.io')(server);
+var model = require('./model');
 
 server.listen(8081);
 
 /**
- * Main route
+ * Main route only shows the server status.
  */
 function httpHandler(req, res) {
     res.writeHead(200, {'Content-Type': 'text/plain'});
