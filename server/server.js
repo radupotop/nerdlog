@@ -18,6 +18,22 @@ function httpHandler(req, res) {
  * Handle connection upgrade
  */
 io.on('connection', function(socket) {
+    
+    
+    /**
+     * List available boards.
+     */
+    socket.on('getAllBoards', function() {
+        model.getAllBoards(function(err, resp) {
+            socket.emit('boardsList', resp);
+        });
+    });
+    
+    socket.on('getAllPostsFromBoard', function(data) {
+        model.getAllPostsFromBoard(data.boardId, function(err, resp) {
+            socket.emit('postsList', resp);
+        });
+    })
 
     /**
      * Handle data from client

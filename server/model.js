@@ -33,7 +33,13 @@ function getAllPostsFromBoard(boardId, callback) {
     if (!boardId) {
         throw new Error('No board ID provided');
     }
-    return conn.query('select * from posts where board_id = ?', [boardId], callback);
+    return conn.query(
+        'select * from posts \
+        left join users on posts.user_id = users.user_id \
+        where board_id = ?',
+        [boardId],
+        callback
+    );
 }
 
 /**
