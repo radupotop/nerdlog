@@ -34,9 +34,11 @@ function getAllPostsFromBoard(boardId, callback) {
         throw new Error('No board ID provided');
     }
     return conn.query(
-        'select * from posts \
+        '(select * from posts \
         left join users on posts.user_id = users.user_id \
-        where board_id = ?',
+        where board_id = ? \
+        order by posts.post_id desc \
+        limit 25) order by post_id asc',
         [boardId],
         callback
     );
