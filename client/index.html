@@ -19,6 +19,23 @@
     <div class="contents" ng-bind-html="p.post_contents | markdown"></div>
 </div>
 
+<form>
+    <h4>Add post</h4>
+    <textarea cols="50" rows="8" ng-model="newPost"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+    <label>
+        <input type="checkbox" ng-model="showPreview">
+        Live Preview
+    </label>
+</form>
+
+<div ng-show="showPreview">
+    <h4>Live Preview</h4>
+    <div ng-bind-html="newPost || '' | markdown">
+    </div>
+</div>
+
 <!--
 <h4>Client</h4>
 
