@@ -26,15 +26,15 @@ io.on('connection', function(socket) {
      */
     socket.on('getAllBoards', function() {
         model.getAllBoards(function(err, resp) {
-            socket.emit('boardsList', resp);
+            socket.emit('boards', {boards: resp});
         });
     });
     
-    socket.on('getAllPostsFromBoard', function(data) {
-        model.getAllPostsFromBoard(data.boardId, function(err, resp) {
-            socket.emit('postsList', resp);
+    socket.on('getAllPostsFromBoard', function(boardId) {
+        model.getAllPostsFromBoard(boardId, function(err, resp) {
+            socket.emit('posts', {posts: resp});
         });
-    })
+    });
 
     /**
      * Handle data from client

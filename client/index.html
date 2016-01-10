@@ -4,6 +4,21 @@
 </head>
 <body ng-controller="msg">
 
+<h2>Boards</h2>
+<ul>
+<li ng-repeat="b in boards">
+    <a ng-href="#/board/{{b.board_id}}" ng-bind="b.board_name" ng-click="getAllPostsFromBoard(b.board_id)"></a>
+</li>
+</ul>
+
+<h2>Posts</h2>
+<div ng-repeat="p in posts">
+    {{p.user_name}}
+    {{p.post_created | date:'medium'}}
+    {{p.post_contents}}
+</div>
+
+<!--
 <h4>Client</h4>
 
     Scrollback:
@@ -30,14 +45,15 @@
         <input type="submit" value="Send">
 
     </form>
+-->
 
-    <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/socket.io-client/socket.io.js"></script>
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-route/angular-route.js"></script>
+<script src="bower_components/socket.io-client/socket.io.js"></script>
 
-    <script src="client.js"></script>
-    <script src="config.js"></script>
+<script src="client.js"></script>
+<script src="config.js"></script>
 
 </body>
 </html>

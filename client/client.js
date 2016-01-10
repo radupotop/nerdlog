@@ -13,13 +13,33 @@ client.controller('msg', function($scope, config) {
         console.log(scrollback);
         $scope.scrollback.push(angular.copy(scrollback));
         $scope.$apply();
-    };
+    }
 
     $scope.input = {
         user: "The Dude"
     };
 
-    var socket = io.connect('ws://' + config.host + ':' + config.port);
+    /**
+     * Get all boards initially.
+     */
+    socket.emit('getAllBoards');
+    socket.on('boards', function(resp) {
+        $scope.boards = resp.boards;
+        $scope.$apply();
+    });
+    
+    /**
+     * Get all posts from a certain board.
+     */
+    function getAllPostsFromBoard(boardId) {
+        socket.emit('getAllPostsFromBoard', boardId);
+        socket.on('posts', function(resp) {
+            $scope.posts = resp.posts;
+            $scope.$apply();
+        });
+    }
+    
+    $scope.getAllPostsFromBoard = getAllPostsFromBoard;
 
     socket.emit('join', {user: $scope.input.user, msg: 'joined'});
 
