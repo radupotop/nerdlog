@@ -1,6 +1,7 @@
 <html ng-app="client">
 <head>
     <title>Client</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body ng-controller="msg">
 
@@ -12,10 +13,10 @@
 </ul>
 
 <h2>Posts</h2>
-<div ng-repeat="p in posts">
-    {{p.user_name}}
-    {{p.post_created | date:'medium'}}
-    {{p.post_contents}}
+<div ng-repeat="p in posts" class="post">
+    <div class="username">{{p.user_name}}</div>
+    <div class="timestamp">{{p.post_created | date:'medium'}}</div>
+    <div class="contents" ng-bind-html="p.post_contents | markdown"></div>
 </div>
 
 <!--
@@ -51,6 +52,7 @@
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-route/angular-route.js"></script>
 <script src="bower_components/socket.io-client/socket.io.js"></script>
+<script src="bower_components/markdown/lib/markdown.js"></script>
 
 <script src="client.js"></script>
 <script src="config.js"></script>

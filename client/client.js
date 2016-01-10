@@ -67,3 +67,13 @@ client.controller('msg', function($scope, config) {
     });
 
 });
+
+/**
+ * Markdown filter.
+ * To be used with ng-bind-html=""
+ */
+client.filter('markdown', function($sce) {
+    return function(value) {
+        return $sce.trustAsHtml(markdown.toHTML(value));
+    };
+});
