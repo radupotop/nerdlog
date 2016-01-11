@@ -1,0 +1,18 @@
+.post {
+    padding: 1em;
+    background: #ccc;
+}
+
+.post:nth-child(odd) {
+    background: #eee;
+}
+
+.username {
+    font-size: 1.3em;
+    float: left;
+    width: 200px;
+}
+
+.timestamp {
+    font-size: .5em;
+}

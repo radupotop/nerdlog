@@ -45,6 +45,22 @@ function getAllPostsFromBoard(boardId, callback) {
 }
 
 /**
+ * Get one post.
+ */
+function getPost(postId, callback) {
+    if(_.isEmpty(arguments)) {
+        throw new Error('No arguments provided');
+    }
+    return conn.query(
+        'select * from posts \
+        left join users on posts.user_id = users.user_id \
+        where post_id = ?',
+        [postId],
+        callback
+    );
+}
+
+/**
  * Add post to board.
  */
 function addPostToBoard(boardId, userId, contents, callback) {
@@ -53,7 +69,12 @@ function addPostToBoard(boardId, userId, contents, callback) {
     }
     return conn.query(
         'insert into posts set ?', 
-        {board_id: boardId, user_id: userId, post_created: new Date(), post_contents: contents}, 
+        {
+            board_id: boardId,
+            user_id: userId, 
+            post_created: new Date(), 
+            post_contents: contents
+        },
         callback
     );
 }
@@ -65,5 +86,6 @@ module.exports = {
     getAllBoards: getAllBoards,
     getAllPostsFromBoard: getAllPostsFromBoard,
     addPostToBoard: addPostToBoard,
-    getUser: getUser
+    getUser: getUser,
+    getPost: getPost
 };

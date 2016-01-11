@@ -41,7 +41,9 @@ io.on('connection', function(socket) {
      */
     socket.on('addPostToBoard', function(post){
         model.addPostToBoard(post.boardId, post.userId, post.contents, function(err, resp) {
-            socket.emit('newPost', {posts: post});
+            model.getPost(resp.insertId, function(err, resp) {
+                socket.emit('newPost', {post: resp[0]});
+            });
         });
     });
 

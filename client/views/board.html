@@ -1,0 +1,53 @@
+<h2 ng-bind="activeBoard.board_name"></h2>
+
+<div ng-repeat="p in posts" class="post">
+    <div class="username">{{p.user_name}}</div>
+    <div class="timestamp">{{p.post_created | date:'medium'}}</div>
+    <div class="contents" ng-bind-html="p.post_contents | markdown"></div>
+</div>
+
+<form ng-submit="addPostToBoard(postContents)">
+    <h4>Add post</h4>
+    <textarea cols="50" rows="8" ng-model="postContents"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+    <label>
+        <input type="checkbox" ng-model="showPreview">
+        Live Preview
+    </label>
+</form>
+
+<div ng-show="showPreview">
+    <h4>Live Preview</h4>
+    <div ng-bind-html="newPost || '' | markdown">
+    </div>
+</div>
+
+<!--
+<h4>Client</h4>
+
+    Scrollback:
+    <br>
+    <div style="background: #eee; font-family: monospace; height: 200px; overflow: auto;">
+        <p ng-repeat="e in scrollback">
+            <span ng-bind="e.timestamp | date: 'HH:mm'" style="font-size: .75em;"></span>
+            <span ng-bind="e.user"></span>:
+            <span ng-bind="e.msg"></span>
+        </p>
+    </div>
+    <br>
+    <br>
+
+    <form ng-submit="sengMsg(input)">
+
+        User:
+        <input type="text" ng-model="input.user">
+        <br>
+
+        <input type="text" ng-model="input.msg" style="width: 600px;">
+        <br>
+
+        <input type="submit" value="Send">
+
+    </form>
+-->
