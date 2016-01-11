@@ -1,27 +1,31 @@
-<h2 ng-bind="activeBoard.board_name"></h2>
+<h1 class="page-header" ng-bind="activeBoard.board_name"></h1>
 
 <div ng-include="'views/index.html'"></div>
 
-<div ng-repeat="p in posts track by $index" class="post">
-    <div class="username">{{p.user_name}}</div>
-    <div class="timestamp">{{p.post_created | date:'medium'}}</div>
-    <div class="contents" ng-bind-html="p.post_contents | markdown"></div>
+<div ng-repeat="p in posts track by $index" class="row well">
+    <div class=" col-xs-2">
+        <strong ng-bind="p.user_name"></strong><br>
+        <small ng-bind="p.post_created | date:'medium'"></small>
+    </div>
+    <div class=" col-xs-10" ng-bind-html="p.post_contents | markdown"></div>
 </div>
 
 <form ng-submit="addPostToBoard(postContents)">
+<div class="form-group">
     <h4>Add post</h4>
-    <textarea cols="50" rows="8" ng-model="postContents"></textarea>
+    <textarea cols="50" rows="8" ng-model="postContents" class="form-control"></textarea>
     <br>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" class="btn btn-primary">
     <label>
         <input type="checkbox" ng-model="showPreview">
         Live Preview
     </label>
+</div>
 </form>
 
 <div ng-show="showPreview">
     <h4>Live Preview</h4>
-    <div ng-bind-html="newPost || '' | markdown">
+    <div ng-bind-html="showPreview || '' | markdown">
     </div>
 </div>
 

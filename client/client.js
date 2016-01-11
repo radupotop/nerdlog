@@ -67,7 +67,7 @@ client.controller('board', function($scope, $routeParams, config) {
     socket.emit('getAllBoards');
     socket.on('boards', function(resp) {
         $scope.boards = resp.boards;
-        $scope.activeBoard = $scope.boards.filter(function(b){ 
+        $scope.activeBoard = $scope.boards.filter(function(b){
             return b.board_id ===  boardId;
         })[0];
         $scope.$apply();
