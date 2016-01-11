@@ -37,6 +37,15 @@ io.on('connection', function(socket) {
     });
 
     /**
+     * Add new post
+     */
+    socket.on('addPostToBoard', function(post){
+        model.addPostToBoard(post.boardId, post.userId, post.contents, function(err, resp) {
+            socket.emit('newPost', {posts: post});
+        });
+    });
+
+    /**
      * Handle data from client
      * Timestamp the data when leaving server.
      */
