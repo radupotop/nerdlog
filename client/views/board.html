@@ -2,6 +2,7 @@
 
 <div ng-include="'views/index.html'"></div>
 
+<!-- Posts -->
 <div ng-repeat="p in posts track by $index" class="row well">
     <div class=" col-xs-2">
         <strong ng-bind="p.user_name"></strong><br>
@@ -10,22 +11,30 @@
     <div class=" col-xs-10" ng-bind-html="p.post_contents | markdown"></div>
 </div>
 
-<form ng-submit="addPostToBoard(postContents)">
-<div class="form-group">
-    <h4>Add post</h4>
-    <textarea cols="50" rows="8" ng-model="postContents" class="form-control"></textarea>
-    <br>
-    <input type="submit" value="Submit" class="btn btn-primary">
-    <label>
-        <input type="checkbox" ng-model="showPreview">
-        Live Preview
-    </label>
-</div>
-</form>
+<!-- Add post -->
+<div class="row">
+    <form ng-submit="addPostToBoard(postContents)" class="col-xs-6">
+    <div class="form-group">
+        <h4>
+            <label for="postContents">Write post</label>
+        </h4>
+        <textarea cols="50" rows="8" ng-model="postContents" 
+            class="form-control" id="postContents"
+            placeholder="Markdown is enabled">
+        </textarea>
+        <br>
+        <input type="submit" value="Submit" class="btn btn-primary">
+        <label class="pull-right checkbox">
+            <input type="checkbox" ng-model="showPreview">
+            Live Preview
+        </label>
+    </div>
+    </form>
 
-<div ng-show="showPreview">
-    <h4>Live Preview</h4>
-    <div ng-bind-html="postContents || '' | markdown">
+    <div ng-show="showPreview" class="col-xs-6">
+        <h4>Live Preview</h4>
+        <div ng-bind-html="postContents || '' | markdown">
+        </div>
     </div>
 </div>
 
