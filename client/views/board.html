@@ -1,6 +1,8 @@
 <h2 ng-bind="activeBoard.board_name"></h2>
 
-<div ng-repeat="p in posts" class="post">
+<div ng-include="'views/index.html'"></div>
+
+<div ng-repeat="p in posts track by $index" class="post">
     <div class="username">{{p.user_name}}</div>
     <div class="timestamp">{{p.post_created | date:'medium'}}</div>
     <div class="contents" ng-bind-html="p.post_contents | markdown"></div>
