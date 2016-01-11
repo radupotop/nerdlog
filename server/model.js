@@ -1,6 +1,7 @@
 var sql = require('mysql');
 var _   = require('lodash');
 
+/* SQL connection */
 var conn = sql.createConnection({
     host: 'localhost',
     user: 'root',
