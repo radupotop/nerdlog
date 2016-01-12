@@ -109,7 +109,6 @@ client.controller('board', function($scope, $routeParams, config) {
             userId: 1
         });
         $scope.postContents = '';
-        $scope.$apply();
     };
     
     socket.on('newPost', function(resp) {

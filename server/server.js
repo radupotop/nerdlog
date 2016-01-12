@@ -32,6 +32,9 @@ io.on('connection', function(socket) {
         });
     });
     
+    /**
+     * Get all posts from a board.
+     */
     socket.on('getAllPostsFromBoard', function(boardId) {
         model.getAllPostsFromBoard(boardId, function(err, resp) {
             socket.emit('posts', {posts: resp});
