@@ -28,4 +28,10 @@ describe('model test', function(){
         })
     });
 
+    it('addPostToBoard', function(){
+        model.addPostToBoard(1, 1, 'test post', function(err, resp) {
+            expect(resp[0].post_id).to.be(1);
+        })
+    });
+
 });
