@@ -11,6 +11,7 @@ user_id | user_joined | user_name | user_details
 */
 
 drop table if exists posts;
+drop table if exists session;
 drop table if exists users;
 drop table if exists boards;
 
@@ -27,7 +28,7 @@ create table users(
     user_joined datetime,
     user_name varchar(255),
     user_details text,
-    password_hash varchar(64)
+    password_hash char(64)
 );
 
 create table posts(
@@ -45,10 +46,9 @@ create table posts(
 The token is a hash of the users.password_hash
 */
 create table session(
-    session_id int unsigned not null auto_increment,
-    primary key(session_id),
+    token char(64) not null,
+    primary key(token),
     user_id int unsigned,
     foreign key(user_id) references users(user_id),
-    token varchar(64),
     expires datetime
 );
