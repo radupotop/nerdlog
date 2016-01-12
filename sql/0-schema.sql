@@ -26,7 +26,8 @@ create table users(
     primary key(user_id),
     user_joined datetime,
     user_name varchar(255),
-    user_details text
+    user_details text,
+    password_hash varchar(64)
 );
 
 create table posts(
@@ -40,3 +41,14 @@ create table posts(
     post_contents text
 );
 
+/*
+The token is a hash of the users.password_hash
+*/
+create table session(
+    session_id int unsigned not null auto_increment,
+    primary key(session_id),
+    user_id int unsigned,
+    foreign key(user_id) references users(user_id),
+    token varchar(64),
+    expires datetime
+);

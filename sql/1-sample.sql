@@ -6,9 +6,9 @@ insert into boards values(3, 'Games');
 
 /* users */
 
-insert into users values(1, '2015-01-06 12:00:00', 'Radu P', null);
-insert into users values(2, '2015-01-07 12:00:00', 'Mircea S', 'Huge nerd');
-insert into users values(3, '2015-01-08 12:00:00', 'Virgiliu D', 'Likes cats');
+insert into users values(1, '2015-01-06 12:00:00', 'Radu P', null, 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
+insert into users values(2, '2015-01-07 12:00:00', 'Mircea S', 'Huge nerd', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
+insert into users values(3, '2015-01-08 12:00:00', 'Virgiliu D', 'Likes cats', 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855');
 
 /* posts */
 

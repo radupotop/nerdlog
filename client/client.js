@@ -4,6 +4,7 @@ var socket;
 /* Bootstrap app */
 client.run(function(config) {
     socket = io.connect('ws://' + config.host + ':' + config.port, {transports: ['websocket']});
+    socket.emit('join', {msg: 'joined'});
 });
 
 client.config(function($routeProvider) {

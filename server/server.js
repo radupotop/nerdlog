@@ -1,4 +1,6 @@
-// socket server demo
+/*
+ Socket server
+*/
 var server = require('http').createServer(httpHandler);
 var io = require('socket.io')(server);
 var model = require('./model');
@@ -43,6 +45,7 @@ io.on('connection', function(socket) {
         model.addPostToBoard(post.boardId, post.userId, post.contents, function(err, resp) {
             model.getPost(resp.insertId, function(err, resp) {
                 socket.emit('newPost', {post: resp[0]});
+                socket.broadcast.emit('newPost', {post: resp[0]});
             });
         });
     });
