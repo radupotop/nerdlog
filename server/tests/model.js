@@ -1,5 +1,3 @@
-var chai = require('chai');
-var expect = chai.expect;
 var model = require('../model');
 
 describe('model test', function(){

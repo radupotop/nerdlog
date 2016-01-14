@@ -15,7 +15,19 @@ Threads will probably never be supported.
 Posts will have the option to be tagged.
 
 Only the server model has unit tests for now.
+The session module is WIP.
+
 A demo video is provided.
+
+
+To run
+------
+
+node server/server.js
+
+client/index.html has to be served from a webserver like apache or nginx to work.
+
+Tests can be run with mocha
 
 
 TODO
