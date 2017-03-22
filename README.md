@@ -17,8 +17,6 @@ Posts will have the option to be tagged.
 Only the server model has unit tests for now.
 The session module is WIP.
 
-A demo video is provided.
-
 
 To run
 ------
